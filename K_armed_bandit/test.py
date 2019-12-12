@@ -15,5 +15,6 @@ def main():
     sigmas = np.array(([0.5,1.5,2.0,1.01]))
     #test = bandit.generate_rewards(mus,sigmas)
     mu_rewards = [0]*4
+    #nothing to commit
     
 main()
