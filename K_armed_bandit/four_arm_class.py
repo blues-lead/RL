@@ -7,8 +7,7 @@ Created on Thu Dec 12 18:28:16 2019
 import numpy as np
 
 class KArmBandit:
-    def __init__(self, arms):
-        self.narms = 0
+    def __init__(self, arms=10):
         if arms > 0:
             self.narms = arms
         else:
