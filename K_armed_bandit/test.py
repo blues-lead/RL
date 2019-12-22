@@ -30,4 +30,13 @@ def main():
     score_data = pd.concat(df_arms)
     sns.boxplot(x='class', y='score', data=score_data)    
     
+    steps = 25000
+    q_table = np.zeros((1,4))
+    for i in range(steps):
+        chosen_action = randrange(4)
+        i_reward = np.random.normal(mus[chosen_action], sigmas[chosen_action],1)[0]
+        q_table[0][chosen_action] += i_reward
+    print("Arm", np.argmax(q_table)+1, "was selected")
+    
+    
 main()
