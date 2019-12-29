@@ -72,15 +72,15 @@ def main():
     #model = create_model()
     #model.fit(trainX, trainY, epochs=20)
     #model.save('ce_fstmodel')
-    model = load_model('ce_fstmodel')
+    model = load_model('ce_fstmodel.h5y')
     done = False
     count = 0
-    while not done or count != 10000:
+    while not done:# or count != 10000:
         env.render()
         obs = env.reset()
         action=np.argmax(model.predict(obs.reshape(1,4)))
         obs = env.step(action)
-        time.sleep(0.1) # Kernel dies because of that
+        #time.sleep(0.1) # Kernel dies because of that
         count += 1
     env.close()
     
