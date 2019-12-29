@@ -4,7 +4,9 @@ Created on Sat Dec 28 17:14:48 2019
 
 @author: Anton
 """
+import gym
 import random
+
 
 class Environment:
     def __init__(self):
@@ -36,6 +38,7 @@ class Agent:
         self.total_reward += reward
         
 if __name__ == "__main__":
+    e = gym.make('CartPole-v0')
     env = Environment()
     agent = Agent()
     
