@@ -1,1 +1,5 @@
-Here I am studying by myself the Reinforcement Learning algorithms by means of Coursera and the "Reinforcement Learning book"
+# Here I am exploring Reinforcement Learning algorithms
+
+The books I have use for self studying are:
+ - RL book
+ - Deep Reinforcement Learning Hands-on, Maxim Lapan
