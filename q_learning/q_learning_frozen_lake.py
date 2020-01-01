@@ -81,10 +81,6 @@ class Agent:
             time.sleep(1)
             action = self.select_action(state)
             new_state, reward, done, _ = env.step(action)
-            if new_state == state:
-                while new_state != state:
-                    action = self.select_action(state)
-                    new_state, reward, done, _ = env.step(action)
             total_reward += reward
             state = new_state
     
