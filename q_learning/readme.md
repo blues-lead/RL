@@ -4,6 +4,6 @@ Frozen lake is a board with 16 positions (states). There is 33% probability of s
 cell while taking next step.
 The problem is solved by:
 * Sampling/playing n-random steps and filling several tables:
-** rewards
-** transitions
-** values
+- rewards
+- transitions
+- values
