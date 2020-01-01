@@ -37,6 +37,18 @@ class Agent:
             
             self.state = self.env.reset() if done else new_state
             
+    def calc_action_value(self, state, action):
+        state_val = str(state) + str(action) # get key for the pair (action, state)
+        vals = self.transits[state_val] # get target_state and their counters
+        total = sum([t for t in vals.values()]) # get sum of all counters
+        qsa = 0 # accumulating action values
+        for tgstate, count in vals.items():
+            reward_key = str(state)+str(action)+str(tgstate) # get key for reward table
+            qsa += (count/total)*(self.rewards[reward_key] + GAMMA*self.values(tgstate))
+        return qsa
+            
             
 agnt = Agent()
-transits=agnt.play_n_random_steps(5)
+agnt.play_n_random_steps(100)
+test = agnt.calc_action_value(1,0)
+print(test)
