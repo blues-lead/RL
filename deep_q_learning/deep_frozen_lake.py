@@ -36,6 +36,15 @@ class Agent:
         return best_value, best_action
     
     def value_update(self, s, a, r, next_s):
+        best_v, _ = self.best_value_action(next_s)
+        l_part = (1-ALPHA)*self.values[(s,a)]
+        r_part = ALPHA*(r + GAMMA*best_v)
+        self.values[(s,a)] = l_part + r_part
+        
+    def play_episode(self, env):
+        state = env.reset()
+        reward = 0.0
+        
         
     
     
