@@ -7,6 +7,9 @@ Created on Wed Jan  1 13:22:00 2020
 import gym
 import collections
 import time
+import tensorflow as tf
+from datetime import datetime
+
 
 ENV_NAME = "FrozenLake-v0"
 GAMMA = 0.9
@@ -90,12 +93,23 @@ class Agent:
                             for action in range(self.env.action_space.n)]
             self.values[state] = max(state_values)
         
-            
+
+now = datetime.now()
+logdir = "./logs/" + now.strftime("%Y%m%d-%H%M%S") + "/"  
+
+if tf.gfile.Exists(logdir):
+   tf.gfile.DeleteRecursively(logdir) 
+
+writer = tf.summary.FileWriter(logdir)
+writer.flush()
+          
 test_env = gym.make(ENV_NAME)            
 agnt = Agent()
 best_reward = 0
 iteration = 0
 while True:
+    summary = tf.Summary()
+
     iteration += 1
     agnt.play_n_random_steps(100)
     agnt.value_iteration()
@@ -106,8 +120,10 @@ while True:
     if reward > best_reward:
         print("At iteration", iteration, "reward gained is", reward)
         best_reward = reward
-    if best_reward >= 0.8:
+    if best_reward >= 0.9:
         print("Problem solved!")
         break
-
+    summary.value.add(tag='reward', simple_value = reward)
+    writer.add_summary(summary, iteration)
+writer.flush()
 agnt.play_final_episode(test_env)
