@@ -97,11 +97,7 @@ class Agent:
 now = datetime.now()
 logdir = "./logs/" + now.strftime("%Y%m%d-%H%M%S") + "/"  
 
-if tf.gfile.Exists(logdir):
-   tf.gfile.DeleteRecursively(logdir) 
-
 writer = tf.summary.FileWriter(logdir)
-writer.flush()
           
 test_env = gym.make(ENV_NAME)            
 agnt = Agent()
