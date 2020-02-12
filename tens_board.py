@@ -4,6 +4,7 @@ Created on Sun Jan  5 19:47:12 2020
 for some reason empty file
 and one more comment for testing branching on github
 terveisia ketulle/ja minulle
+gitignore changed
 @author: Anton ja Kettu
 """
 
