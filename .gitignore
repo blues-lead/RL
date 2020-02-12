@@ -3,3 +3,5 @@ Lib/
 pyvenv.cfg
 *.h5y
 logs/
+*.rsa
+*.pub
